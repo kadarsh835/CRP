@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'uq23uy6_@91xg_z6q$lbf50mn(0r^v@v7_cr0d8i+eq=d2*q$k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get('ENV', 'DEV') == 'PRODUCTION':
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -36,6 +41,7 @@ INSTALLED_APPS = [
     'course',
     'faculty',
     'miscellaneous',
+    'auth_api',
 
     #defaults
     'django.contrib.admin',
@@ -49,8 +55,14 @@ INSTALLED_APPS = [
     #allauth
     'allauth',
     'allauth.account',
+    'rest_auth.registration',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    # Rest Framework for authentication(Google)
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth'
 
 ]
 
@@ -142,4 +154,12 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
 SITE_ID=1
+
+LOGIN_REDIRECT_URL='/'

@@ -2,3 +2,4 @@
 **/*.pyo
 .vscode
 .env
+db.sqlite3
