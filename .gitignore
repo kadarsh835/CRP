@@ -1,5 +1,6 @@
 **/*.pyc
 **/*.pyo
 .vscode
+curl.http
 .env
 db.sqlite3
