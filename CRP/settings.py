@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'faculty',
     'miscellaneous',
     'auth_api',
+    'admin_user',
 
     #defaults
     'django.contrib.admin',
@@ -59,7 +60,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
-    # Rest Framework for authentication(Google)
+    # Rest Framework for authentication
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -160,6 +161,10 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
+}
+
+REST_AUTH_SERIALIZERS= {
+    'USER_DETAILS_SERIALIZER': 'auth_api.serializers.UserDetailsSerializer',
 }
 
 SITE_ID=1
