@@ -3,8 +3,8 @@ from django.db import models
 from miscellaneous.models import Department
 
 SEMESTER= (
-    (1, 'First'),
-    (2, 'Second'),
+    ('1', 'First'),
+    ('2', 'Second'),
 )
 
 # Create your models here.
@@ -12,7 +12,11 @@ class Course(models.Model):
     course_code= models.CharField(max_length= 10)
     title= models.CharField(max_length= 50)
     department= models.ForeignKey(Department, on_delete=models.SET_NULL, null= True)
-    course_credits= models.SmallIntegerField()
+    lectures= models.SmallIntegerField(default= 3)
+    tutorials= models.SmallIntegerField(default= 1)
+    practicals= models.SmallIntegerField(default= 0)
+    self_study= models.DecimalField(max_digits= 2, decimal_places= 1, default= 2)
+    course_credits= models.DecimalField(max_digits= 2, decimal_places= 1, default= 3)
     
     def save(self, *args, **kwargs):
         self.course_code= self.course_code.upper()
