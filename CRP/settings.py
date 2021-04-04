@@ -36,7 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #apps
+    # apps
     'student',
     'course',
     'faculty',
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'auth_api',
     'admin_user',
 
-    #defaults
+    # defaults
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #allauth
+    # allauth
     'allauth',
     'allauth.account',
     'rest_auth.registration',
@@ -149,7 +149,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Django All-auth settings
+# Django All-auth settings
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of 'allauth
     'django.contrib.auth.backends.ModelBackend',
@@ -160,13 +160,14 @@ AUTHENTICATION_BACKENDS = (
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
     ),
 }
 
-REST_AUTH_SERIALIZERS= {
+REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'auth_api.serializers.UserDetailsSerializer',
 }
 
-SITE_ID=1
+SITE_ID = 1
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL = '/'
