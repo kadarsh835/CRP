@@ -25,5 +25,8 @@ class FacultyTakesCourse(models.Model):
         CourseSection, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.section.course.course_code+' ' + \
-            str(self.section.year)+' Sem: ' + self.section.semester
+        if self.section is not None:
+            return self.section.course.course_code+' ' + \
+                str(self.section.year)+' Sem: ' + self.section.semester
+        else:
+            return str(self.faculty)
