@@ -9,7 +9,7 @@ Django==3.0.7
 django-allauth==0.41.0
 django-cors-headers==3.7.0
 django-rest-auth==0.9.5
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 drf-yasg==1.20.0
 idna==2.9
 inflection==0.5.1
